@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link type = "text/css" rel = "stylesheet" href = "bootstrap-4.0.0.css"/>
+<script src = "jquery-3.3.1.min.js"></script>
+<script src = "bootstrap-4.0.0.js"></script>
+
+<style>
+        body{
+            background-color: rgb(248, 248, 248);
+        }
+        @font-face{
+            font-family: "roboto";
+            src: url("LIGHT.ttf");
+        } 
+    h1,h2,h3,h4,h5,h6{
+        font-family: roboto;
+        font-weight:300;
+    }
+    .heading{
+        position: relative;
+        text-align: center;
+        margin-top:2rem;
+        font-size:3rem;
+    }
+    .subtext{
+        font-family: roboto;
+        font-weight:300;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .little-line{
+        display:block;
+        margin:auto;
+        width:40px;
+        height:8px;
+        border-radius:3px;
+        background-color:rgb(126, 126, 126);
+    }
+    .pl-btn{
+        width:70%;
+        padding-top:70%;
+        border-radius:50%;
+        border:none;
+        text-align:center;
+        margin-left:15%;
+        background-color:rgb(255, 129, 129);
+        transition: all 1s ease;
+
+    }
+    .pl-btn:hover{
+        cursor:pointer;
+        background-color:rgb(255, 96, 96);
+
+        transform:scale(1.1);
+        transition: all 1s ease;
+    }
+    .title{
+        font-family: roboto;
+        font-size:20px;
+    }
+</style>
+<script>
+        $(document).ready(function () {
+            $(".container").hide();
+            $(".subtext").hide();
+            $(".heading").hide().fadeIn(1000,function(){
+                $(".subtext").fadeIn(1000, function(){
+                    $(".container").fadeIn(1000);
+                });
+            });
+        });
+</script>
+
+<script>
+    var playChinese = false;
+    var srcChinese = ["Ha1(chinese).wav","Ha2(chinese).wav","Ha3(chinese).wav"]
+    var allChinese = [];
+    for(var x = 0; x<srcChinese.length;x++){
+        audioChinese = new Audio(srcChinese[x]);
+        allChinese.push(audioChinese);
+    }
+    $(document).ready(function () {
+
+        $("#china").on('click', function(){
+            if(playChinese){
+                playChinese = false;
+                audioChinese.pause();
+                audioChinese.currentTime = 0;
+                console.log(playChinese)
+            }
+            else{
+                playChinese = true;
+                var chIndex = Math.floor(Math.random()*3);
+                audioChinese = allChinese[chIndex];
+                audioChinese.play();
+
+                    setInterval(function(){
+                        if(playChinese){
+                            audioChinese.currentTime = 0;
+
+                            chIndex = Math.floor(Math.random()*3);
+                            audioChinese = allChinese[chIndex];
+                            audioChinese.play();
+                        }
+                    }, 600);
+
+                
+            }
+        });
+    });
+
+
+
+</script>
+<script>
+        var playSpanish = false;
+        var srcSpanish = ["Ha1(spanish).wav","Ha2(spanish).wav","Ha3(spanish).wav"]
+        var allSpanish = [];
+        for(var x = 0; x<srcSpanish.length;x++){
+            audioSpanish = new Audio(srcSpanish[x]);
+            allSpanish.push(audioSpanish);
+        }
+        $(document).ready(function () {
+    
+            $("#spanish").on('click', function(){
+                if(playSpanish){
+                    playSpanish = false;
+                    audioSpanish.pause();
+                    audioSpanish.currentTime = 0;
+                    console.log(playSpanish)
+                }
+                else{
+                    playSpanish = true;
+                    var chIndex = Math.floor(Math.random()*3);
+                    audioSpanish = allSpanish[chIndex];
+                    audioSpanish.play();
+    
+                        setInterval(function(){
+                            if(playSpanish){
+                                audioSpanish.currentTime = 0;
+                                chIndex = Math.floor(Math.random()*3);
+                                audioSpanish = allSpanish[chIndex];
+                                audioSpanish.play();
+                            }
+                        }, 600);
+    
+                    
+                }
+            });
+        });
+    
+    
+    
+    </script>
+    <script>
+    
+        var italianHa = new Audio("Ha(italian)");
+        var playItalian = false;
+        italianHa.loop = true;
+        $(document).ready(function () {
+            $("#Italian").on('click', function(){
+                if(playItalian){
+                    italianHa.pause();
+                    italianHa.currentTime= 0;
+                }
+                else{
+                    italianHa.play();
+                }
+            });
+        });
+    </script>
+    <script>
+        var italianHa = new Audio("Ha(italian).wav");
+        var playItalian = false;
+        italianHa.loop = true;
+        $(document).ready(function () {
+            $("#Italian").on('click', function(){
+                if(playItalian){
+                    playItalian = false;
+                    italianHa.pause();
+                    italianHa.currentTime= 0;
+                }
+                else{
+                    playItalian = true;
+                    italianHa.play();
+                }
+            });
+        });
+    </script>
+    <script>
+        var frenchHa = new Audio("Ha(french).wav");
+        var playfrench = false;
+        frenchHa.loop = true;
+        $(document).ready(function () {
+            $("#french").on('click', function(){
+                if(playfrench){
+                    playfrench = false;
+                    frenchHa.pause();
+                    frenchHa.currentTime= 0;
+                }
+                else{
+                    playfrench = true;
+                    frenchHa.play();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+<h2 class = "heading">Monotone laugh generator.</h2>
+<br>
+<div class = "little-line"></div>
+<p class = "subtext m-4"><em>For when someone tells a bad joke, and you want them to know it.</em></p>
+<br>
+<div class="container">
+    <div class = "row justify-content-center">
+        <div class ="col-md-3">
+        <p class = "title text-center">Chinese</p>
+            <button class = "pl-btn" id = "china"></button>
+        </div>
+        <div class ="col-md-3">
+            <p class = "title text-center">Spanish</p>
+            <button class = "pl-btn" id = "spanish"></button>
+        </div>
+        <div class ="col-md-3">
+            <p class = "title text-center">French</p>
+            <button class = "pl-btn" id = "french"></button>
+        </div>
+        <div class ="col-md-3">
+            <p class = "title text-center">Italian</p>
+            <button class = "pl-btn" id = "Italian"></button>
+        </div>
+    </div>
+
+</div>
+
+
+</div>
+    
+</body>
+</html>
